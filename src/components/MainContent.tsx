@@ -2,6 +2,7 @@ import React from 'react';
 import { PublicationEntry } from './PublicationEntry';
 import { ProjectEntry } from './ProjectEntry';
 import { ResearchDiagram } from './ResearchDiagram';
+import { Section } from './ui/Section';
 import { portfolioData } from "../data/portfolio";
 
 const slugify = (text: string) => {
@@ -20,84 +21,91 @@ export const MainContent = () => {
   const { bio, interests, workExperience, researchExperience, projects, publications } = portfolioData.main;
 
   return (
-    <main className="flex-1 p-6 md:pl-4 md:pr-2 md:py-12 md:max-w-5xl mx-auto font-sans text-black">
+    <main className="flex-1 p-6 md:pl-4 md:pr-2 md:py-12 md:max-w-5xl mx-auto font-sans text-foreground">
       
-      {/* Biography & Interests */}
-      <section className="mb-12">
-        <div className="text-base leading-relaxed mb-10 text-black">
+      {/* Biography */}
+      <section className="mb-4">
+        <div className="text-sm leading-relaxed mb-4 text-foreground">
           {bio.map((paragraph, index) => (
-            <p key={index} className="mb-4">
+            <p key={index} className="mb-3">
               {paragraph}
             </p>
           ))}
         </div>
-
-       {/* Interests Section */}
-       {/* <section className="mb-12"> */}
-        <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Interests</h2>
-        <p className="text-base leading-relaxed mb-12">
-          {portfolioData.main.interests}
-        </p>
-      {/* </section>   Research Visualization Diagram */}
-        <ResearchDiagram />
       </section>
 
+      {/* Interests & Diagram */}
+      <Section title="Interests">
+        <p className="text-sm leading-relaxed mb-4">
+          {interests}
+        </p>
+        <ResearchDiagram />
+      </Section>
+
       {/* Work Experience */}
-      <section className="mb-12 pt-8 border-t border-gray-200">
-        <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Work Experience</h2>
-        <div className="flex flex-col gap-8">
-           {workExperience?.map((work, idx) => (
-             <div key={idx} className="flex flex-col md:flex-row gap-4 md:items-start">
+      <Section title="Work Experience" withSeparator>
+        <div className="flex flex-col gap-4">
+           {workExperience.map((work, index) => (
+             <div key={index} className="flex flex-col md:flex-row gap-2 md:gap-4">
                {/* Placeholder Image */}
-               <div className="w-full md:w-32 h-24 bg-gray-200 shrink-0 rounded-sm flex items-center justify-center text-xs text-gray-500">
-                  Image
+               <div className="w-full md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+                  {work.image ? (
+                    <img src={work.image} alt={work.company} className="w-full h-full object-cover" /> 
+                  ) : "Image"}
                </div>
                <div>
-                  <h3 className="text-lg font-bold font-sans">{work.company}</h3>
-                  <p className="text-sm font-bold text-gray-600 mb-1">{work.role} <span className="font-normal text-gray-500">| {work.duration}</span></p>
+                  <h3 className="text-sm font-bold font-sans">{work.company}</h3>
+                  <p className="text-xs font-bold text-muted-foreground mb-1">{work.role} <span className="font-normal text-muted-foreground">| {work.duration}</span></p>
                   <p className="text-sm leading-relaxed">{work.description}</p>
                </div>
              </div>
            ))}
         </div>
-      </section>
+      </Section>
 
       {/* Research Experience */}
-      <section className="mb-12 pt-8 border-t border-gray-200">
-        <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Research Experience</h2>
-         <div className="flex flex-col gap-6">
-           {researchExperience?.map((research, idx) => (
-             <div key={idx}>
-               <h3 className="text-lg font-bold font-sans">{research.institution}</h3>
-               <p className="text-sm font-bold text-gray-600 mb-1">{research.role} <span className="font-normal text-gray-500">| {research.duration}</span></p>
-               <p className="text-sm leading-relaxed">{research.description}</p>
+      <Section title="Research Experience" withSeparator>
+         <div className="flex flex-col gap-4">
+           {researchExperience.map((research, index) => (
+             <div key={index}>
+               <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+                  <div className="w-full md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+                      {research.image ? (
+                        <img src={research.image} alt={research.institution} className="w-full h-full object-cover" />
+                      ) : "Image"}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold font-sans">{research.institution}</h3>
+                    <p className="text-xs font-bold text-muted-foreground mb-1">{research.role} <span className="font-normal text-muted-foreground">| {research.duration}</span></p>
+                    <p className="text-sm leading-relaxed">{research.description}</p>
+                  </div>
+               </div>
              </div>
            ))}
         </div>
-      </section>
+      </Section>
 
       {/* Publications */}
-      <section className="mb-12 pt-8 border-t border-gray-200">
-        <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Publications</h2>
-        
-        {publications.map((pub, index) => (
-          <PublicationEntry 
-            key={index}
-            id={`doc-${slugify(pub.title)}`}
-            title={pub.title}
-            authors={pub.authors}
-            venue={pub.venue}
-            abstract={pub.abstract}
-            links={pub.links}
-          />
-        ))}
-      </section>
+      <Section title="Publications" withSeparator>
+        <div className="flex flex-col gap-1">
+          {publications.map((pub, index) => (
+            <PublicationEntry 
+              key={index}
+              id={`doc-${slugify(pub.title)}`}
+              title={pub.title}
+              authors={pub.authors}
+              venue={pub.venue}
+              abstract={pub.abstract}
+              links={pub.links}
+            />
+          ))}
+        </div>
+      </Section>
 
       {/* Projects */}
-      <section className="pt-8 border-t border-gray-200">
-        <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Projects</h2>
-         <div className="flex flex-col">
-           {projects?.map((project, idx) => (
+      <Section title="Selected Projects" withSeparator>
+         <div className="flex flex-col gap-1">
+           {projects.map((project, idx) => (
              <ProjectEntry 
                 key={idx}
                 id={`pr-${slugify(project.name)}`}
@@ -110,7 +118,7 @@ export const MainContent = () => {
              />
            ))}
         </div>
-      </section>
+      </Section>
     </main>
   );
 };

@@ -3,7 +3,7 @@ import { MainContent } from "../components/MainContent";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen max-w-7xl mx-auto">
+    <div className="min-h-screen bg-white flex flex-col md:flex-row relative p-6 md:p-12 mx-auto max-w-6xl">
       <Sidebar />
       <MainContent />
     </div>

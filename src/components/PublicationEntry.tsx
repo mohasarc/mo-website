@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface PublicationEntryProps {
+  id?: string;
   title: string;
   authors: React.ReactNode; 
   venue: string;
@@ -8,9 +9,9 @@ interface PublicationEntryProps {
   links: { label: string; url: string }[];
 }
 
-export const PublicationEntry = ({ title, authors, venue, abstract, links }: PublicationEntryProps) => {
+export const PublicationEntry = ({ id, title, authors, venue, abstract, links }: PublicationEntryProps) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-6 mb-8">
+    <div id={id} className="flex flex-col sm:flex-row gap-6 mb-8 scroll-mt-20">
       {/* Thumbnail */}
       <div className="w-full sm:w-[200px] sm:shrink-0">
         <div className="aspect-[4/3] bg-gray-200 rounded border border-gray-100 flex items-center justify-center text-gray-400">
@@ -35,12 +36,12 @@ export const PublicationEntry = ({ title, authors, venue, abstract, links }: Pub
         </p>
         
         {/* Buttons */}
-        <div className="flex flex-wrap gap-2 mt-1">
+        <div className="flex flex-wrap gap-2 mt-2">
           {links.map((link, idx) => (
             <a 
               key={idx}
               href={link.url}
-              className="px-3 py-1 bg-[#F0F0F0] text-[#333333] text-xs font-semibold rounded hover:bg-[#E0E0E0] transition-colors border border-transparent hover:border-gray-300"
+              className="px-2 py-[2px] bg-white text-black text-[10px] font-medium uppercase tracking-wide border border-black hover:bg-black hover:text-white transition-colors"
             >
               {link.label}
             </a>

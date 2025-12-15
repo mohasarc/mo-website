@@ -7,12 +7,10 @@ export const Sidebar = () => {
 
   return (
     <aside className="w-full md:w-[280px] md:shrink-0 p-6 md:pl-8 md:py-6 md:pr-3 flex flex-col gap-5 border-border relative">
-      {/* Profile Header - Name First */}
+      {/* Profile Header - Image Only (Name moved to Layout) */}
       <div className="flex flex-col gap-6">
         <div>
-          <h1 className="text-3xl font-bold font-sans text-foreground leading-none mb-6 tracking-tight">{profile.name}</h1>
-          
-          <Avatar className="w-full h-auto aspect-square rounded-sm mb-6 grayscale contrast-125 bg-muted">
+          <Avatar className="w-40 md:w-full h-auto aspect-square rounded-sm mb-6 grayscale contrast-125 bg-muted">
             <AvatarImage src="/profile.jpg" alt={profile.name} className="object-cover" />
             <AvatarFallback className="rounded-sm text-4xl text-muted-foreground">📸</AvatarFallback>
           </Avatar>

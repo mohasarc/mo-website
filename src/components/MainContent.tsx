@@ -21,7 +21,7 @@ export const MainContent = () => {
   const { bio, interests, workExperience, researchExperience, projects, publications } = portfolioData.main;
 
   return (
-    <main className="flex-1 p-6 md:pl-4 md:pr-2 md:py-12 md:max-w-5xl mx-auto font-sans text-foreground">
+    <main className="flex-1 p-6 md:pl-8 md:pr-2 md:py-6 md:max-w-5xl mx-auto font-sans text-foreground">
       
       {/* Biography */}
       <section className="mb-4">
@@ -48,7 +48,7 @@ export const MainContent = () => {
            {workExperience.map((work, index) => (
              <div key={index} className="flex flex-col md:flex-row gap-2 md:gap-4">
                {/* Placeholder Image */}
-               <div className="w-full md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+               <div className="w-40 md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
                   {work.image ? (
                     <img src={work.image} alt={work.company} className="w-full h-full object-cover" /> 
                   ) : "Image"}
@@ -69,7 +69,7 @@ export const MainContent = () => {
            {researchExperience.map((research, index) => (
              <div key={index}>
                <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-                  <div className="w-full md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+                  <div className="w-40 md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
                       {research.image ? (
                         <img src={research.image} alt={research.institution} className="w-full h-full object-cover" />
                       ) : "Image"}

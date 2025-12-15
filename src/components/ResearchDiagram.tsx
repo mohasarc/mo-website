@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { portfolioData } from "../data/portfolio";
+import { useTheme } from "next-themes";
 
 const scrollById = (id: string) => {
     const element = document.getElementById(id);
@@ -12,6 +13,7 @@ const scrollById = (id: string) => {
 export const ResearchDiagram = () => {
   const { topics, pointers } = portfolioData.main.diagram;
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
+  const { theme } = useTheme();
 
   // Geometry Constants
   // Scaled up again
@@ -28,11 +30,42 @@ export const ResearchDiagram = () => {
   // Rotate so first petal is at Top ( -PI/2 )
   const startAngle = -Math.PI / 2;
 
+  const getThemeColor = (id: string, baseColor: string) => {
+    if (theme === 'dark' || theme === 'colorful') {
+      // Parse Hex
+      const hex = baseColor.replace('#', '');
+      const r = parseInt(hex.substring(0, 2), 16) / 255;
+      const g = parseInt(hex.substring(2, 4), 16) / 255;
+      const b = parseInt(hex.substring(4, 6), 16) / 255;
+
+      // RGB to HSL
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h = 0, s = 0, l = (max + min) / 2;
+
+      if (max !== min) {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      
+      // Adjust for Dark Mode: darkened lightness
+      l = Math.max(0.3, l * 0.65); 
+      
+      return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+    }
+    return baseColor;
+  };
+
   const topicPositions = topics.map((topic, index) => {
     const angle = startAngle + index * angleStep;
     const cx = centerX + orbitRadius * Math.cos(angle);
     const cy = centerY + orbitRadius * Math.sin(angle);
-    return { ...topic, cx, cy, angle };
+    return { ...topic, cx, cy, angle, themeColor: getThemeColor(topic.id, topic.color) };
   });
 
   // activeColor unused, using style logic
@@ -47,10 +80,16 @@ export const ResearchDiagram = () => {
              <circle 
                 key={topic.id}
                 cx={topic.cx} cy={topic.cy} r={petalRadius} 
-                className={`transition-all duration-300 mix-blend-multiply dark:mix-blend-screen stroke-background stroke-2 cursor-pointer ${
-                  isFaint ? 'opacity-20' : 'opacity-90 dark:opacity-40'
-                }`}
-                fill={topic.color}
+                className={`transition-all duration-300 cursor-pointer ${
+                   theme === 'colorful' 
+                     ? 'brightness-110 stroke-none' 
+                     : 'mix-blend-multiply dark:mix-blend-screen stroke-background stroke-2'
+                 } ${
+                   isFaint 
+                     ? 'opacity-20' 
+                     : (theme === 'colorful' ? 'opacity-60 mix-blend-hard-light' : 'opacity-90 dark:opacity-40')
+                 }`}
+                fill={topic.themeColor}
                 onMouseEnter={() => setActiveTopic(topic.id)}
                 onMouseLeave={() => setActiveTopic(null)}
              />
@@ -100,9 +139,10 @@ export const ResearchDiagram = () => {
 
              return (
                <g key={idx} className={`transition-opacity duration-300 ${isFaint ? 'opacity-20' : 'opacity-100'}`}>
-                 <polyline points={`${avgX},${avgY} ${elbowX},${elbowY} ${labelX},${labelY}`} className="stroke-muted-foreground stroke-1 fill-none" />
+                 <polyline points={`${avgX},${avgY} ${elbowX},${elbowY} ${labelX},${labelY}`} 
+                    className={`stroke-1 fill-none ${theme === 'colorful' ? 'stroke-white' : 'stroke-muted-foreground'}`} />
                  {/* Dot at centroid */}
-                 <circle cx={avgX} cy={avgY} r="2" className="fill-foreground" />
+                 <circle cx={avgX} cy={avgY} r="2" className={theme === 'colorful' ? 'fill-white' : 'fill-foreground'} />
                  
                  {/* Render Multiple Items */}
                  {pointer.items.map((item, itemIdx) => (
@@ -115,7 +155,7 @@ export const ResearchDiagram = () => {
                         // If 2 items: y = labelY - 10, labelY + 10
                         textAnchor={anchor} 
                         dominantBaseline="middle"
-                        className="text-[16px] fill-muted-foreground cursor-pointer transition-colors duration-200 hover:fill-foreground hover:font-bold"
+                        className={`text-[16px] cursor-pointer transition-colors duration-200 hover:font-bold ${theme === 'colorful' ? 'fill-white hover:fill-yellow-300' : 'fill-muted-foreground hover:fill-foreground'}`}
                         onClick={() => scrollById(item.targetId)}
                     >
                         {item.label}
@@ -132,7 +172,7 @@ export const ResearchDiagram = () => {
               <text 
                 key={`text-${topic.id}`} 
                 x={topic.cx} y={topic.cy} 
-                className="font-bold text-[16px] pointer-events-none fill-foreground uppercase tracking-widest"
+                className={`font-bold text-[16px] pointer-events-none uppercase tracking-widest ${theme === 'colorful' ? 'fill-white' : 'fill-foreground'}`}
                 textAnchor="middle"
                 dominantBaseline="middle"
                 style={{ opacity: isFaint ? 0.2 : 1, transition: 'opacity 0.3s' }}

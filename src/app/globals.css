@@ -122,6 +122,74 @@ body {
   --sidebar-ring: hsl(212 9% 58%);
 }
 
+.colorful {
+  --background: transparent;
+  --foreground: hsl(0 0% 100%);
+  --card: hsl(0 0% 0% / 0.4);
+  --card-foreground: hsl(0 0% 100%);
+  --popover: hsl(0 0% 0% / 0.6);
+  --popover-foreground: hsl(0 0% 100%);
+  --primary: hsl(60 100% 50%);
+  --primary-foreground: hsl(0 0% 0%);
+  --secondary: hsl(300 100% 50%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 0% / 0.4);
+  --muted-foreground: hsl(0 0% 85%);
+  --accent: hsl(0 0% 100% / 0.2);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 100% 50%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 100% / 0.3);
+  --input: hsl(0 0% 0% / 0.4);
+  --ring: hsl(60 100% 50%);
+  --chart-1: hsl(60 100% 50%);
+  --chart-2: hsl(300 100% 50%);
+  --chart-3: hsl(180 100% 50%);
+  --chart-4: hsl(120 100% 50%);
+  --chart-5: hsl(0 100% 50%);
+  --sidebar: hsl(0 0% 0% / 0.3);
+  --sidebar-foreground: hsl(0 0% 100%);
+  --sidebar-primary: hsl(60 100% 50%);
+  --sidebar-primary-foreground: hsl(0 0% 0%);
+  --sidebar-accent: hsl(0 0% 100% / 0.1);
+  --sidebar-accent-foreground: hsl(0 0% 100%);
+  --sidebar-border: hsl(0 0% 100% / 0.3);
+  --sidebar-ring: hsl(60 100% 50%);
+}
+
+html.colorful body {
+  background-color: #000;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.4) 2px,
+      rgba(0, 0, 0, 0.4) 4px
+    ),
+    linear-gradient(
+      135deg,
+      #ff0055, /* Vibrant Pink/Red */
+      #ff9900, /* Orange */
+      #33cc33, /* Green */
+      #0099ff, /* Blue */
+      #9900cc, /* Purple */
+      #ff0055  /* Loop back */
+    );
+  background-size: 
+    100% 100%, 
+    400% 400%;
+  background-blend-mode: overlay, normal;
+  animation: crazyGradient 20s ease infinite;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+}
+
+@keyframes crazyGradient {
+  0% { background-position: 0 0, 0% 50%; }
+  50% { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0, 0% 50%; }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

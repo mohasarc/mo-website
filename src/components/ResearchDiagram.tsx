@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { portfolioData } from "../data/portfolio";
 import { useTheme } from "next-themes";
 
@@ -13,7 +13,16 @@ const scrollById = (id: string) => {
 export const ResearchDiagram = () => {
   const { topics, pointers } = portfolioData.main.diagram;
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Delay state update to avoid synchronous render warning
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const currentTheme = mounted ? (theme === 'system' ? resolvedTheme : theme) : undefined;
 
   // Geometry Constants
   // Scaled up again
@@ -31,7 +40,7 @@ export const ResearchDiagram = () => {
   const startAngle = -Math.PI / 2;
 
   const getThemeColor = (id: string, baseColor: string) => {
-    if (theme === 'dark' || theme === 'colorful') {
+    if (currentTheme === 'dark' || currentTheme === 'colorful') {
       // Parse Hex
       const hex = baseColor.replace('#', '');
       const r = parseInt(hex.substring(0, 2), 16) / 255;
@@ -81,13 +90,13 @@ export const ResearchDiagram = () => {
                 key={topic.id}
                 cx={topic.cx} cy={topic.cy} r={petalRadius} 
                 className={`transition-all duration-300 cursor-pointer ${
-                   theme === 'colorful' 
+                   currentTheme === 'colorful' 
                      ? 'brightness-110 stroke-none' 
                      : 'mix-blend-multiply dark:mix-blend-screen stroke-background stroke-2'
                  } ${
                    isFaint 
                      ? 'opacity-20' 
-                     : (theme === 'colorful' ? 'opacity-60 mix-blend-hard-light' : 'opacity-90 dark:opacity-40')
+                     : (currentTheme === 'colorful' ? 'opacity-60 mix-blend-hard-light' : 'opacity-90 dark:opacity-40')
                  }`}
                 fill={topic.themeColor}
                 onMouseEnter={() => setActiveTopic(topic.id)}

@@ -19,6 +19,10 @@ export default function Home() {
         <Sidebar />
         <MainContent />
        </div>
+
+       <footer className="w-full text-center text-sm text-muted-foreground mt-12 pb-8">
+          © 2025 Mohammed S. Yaseen. All rights reserved.
+       </footer>
     </div>
   );
 }

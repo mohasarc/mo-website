@@ -98,10 +98,10 @@ export const portfolioData = {
       `Hi there! 👋 I am a Software Engineer at ![logo](logos/filemap-logo.png)[FileMap](https://filemap.com), a spatial collaboration platform for creatives.
 Additionally, I'm an independent researcher collaborating with Professor [Marcelo d'Amorim](https://damorim.github.io/) from ![logo](logos/ncstate-circle-red-whtwolf.png) North Carolina State University 
 and Professor [Owolabi Legunsen](https://www.cs.cornell.edu/~legunsen/) from ![logo](logos/Cornell__C__logo.svg.png) Cornell University 
-on improving runtime verefication for python. Previously, I participated in UIUC+ Summer Undergraduate Research 
+on improving runtime verification for Python. Previously, I participated in the UIUC+ Summer Undergraduate Research 
 program where I worked with Professor [Darko Marinov](https://mir.cs.illinois.edu/marinov/) from ![logo](logos/uiuc-logo.webp) the University of Illinois at Urbana-Champaign 
-on flaky tests detection in Java. I received my B.S. in Computer Engineering from ![logo](logos/bilkent-ing-amblem.png) Bilkent University at Ankara, Turkey.`,
-`I am well versed in Full Stack Development using technologies such as Next.js, React, Nest.js, Node.js, Postgres, Convex, Tailwind CSS, Electron.js, GraphQL, WebGL, Neo4j. Additionally, I am experienced in agentic AI and machine learning using technologies such as LangChain, LangGraph, OpenAI API, Google Generative AI, and Huggingface.`,
+on flaky tests detection in Java. I received my B.S. in Computer Engineering from ![logo](logos/bilkent-ing-amblem.png) Bilkent University in Ankara, Turkey.`,
+`I am well-versed in Full Stack Development using technologies such as Next.js, React, Nest.js, Node.js, Postgres, Convex, Tailwind CSS, Electron.js, GraphQL, WebGL, Neo4j. Additionally, I am experienced in agentic AI and machine learning using technologies such as LangChain, LangGraph, OpenAI API, Google Generative AI, and Hugging Face.`,
       
 `Outside of engineering, I enjoy [graphic design](https://www.behance.net/myds) 🎨 and swimming 🏊.`
     ],
@@ -163,9 +163,9 @@ what a creative professional imagines, and reality, the final implementation, by
           `I joined FileMap at its inception and have built multiple core systems that power the platform. 
 My primary focus has been the viewers subsystem, the pipeline responsible for transforming large files 
 (images, videos, 3D models, PDFs, etc.) into fast, lightweight visuals for the frontend.  I also architected 
-the frontend rendering engine that renders 20k+ images at once while keeping everything smooth and responsive`,
+the frontend rendering engine that renders 20,000+ images at once while keeping everything smooth and responsive.`,
           `Beyond that, I've touched nearly every part of the stack: I built RunnerKit, our process management system 
-that keeps node.js processes and worker threads reliable; and designed a robust, cross-platform 
+that keeps node.js processes and worker threads reliable, and designed a robust, cross-platform 
 file watcher for detecting changes across Windows, macOS, and Linux.`
         ],
         image: "filemap-team.webp"
@@ -177,10 +177,10 @@ file watcher for detecting changes across Windows, macOS, and Linux.`
         description: [
           `I worked as a freelance full-stack engineer with clients across web, AI, and 3D-centric applications. 
 On Upwork, I maintained a 100% Job Success Score after completing 10+ projects and logging 1,700+ hours of work. 
-I also earned the Top Rated Plus badge, which places me in the top 3% of talents on the platform`,
+I also earned the Top Rated Plus badge, which places me in the top 3% of talent on the platform`,
           `One notable engagement was with![logo](logos/codelab-logo.png)CodeLab, a no-code web application 
-builder, where I contributed over 1700+ hours across frontend and backend development, using technologies like Next.js, 
-Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, jest, and Cypress.`,
+builder, where I contributed 1,700+ hours across frontend and backend development, using technologies like Next.js, 
+Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
         ],
         image: ["logos/upwork.webp", 'personal/upwork-top-rated-plus-badge.webp']
       }

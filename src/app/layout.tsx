@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,7 +93,7 @@ export default function RootLayout({
             })
           }}
         />
-        <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
@@ -101,6 +102,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <SpeedInsights />
       </body>
     </html>
   );

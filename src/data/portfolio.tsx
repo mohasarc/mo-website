@@ -64,6 +64,10 @@ export interface Publication {
   image?: string;
 }
 
+export interface Language {
+  language: string;
+  proficiency: string;
+}
 
 export const portfolioData = {
   sidebar: {
@@ -350,6 +354,12 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
           { label: "Code", url: "https://github.com/mohasarc/supernova_chat" }
         ]
       } as Project
-    ]
+    ],
+    languages: [
+      // { language: "Arabic", proficiency: "Native" },
+      // { language: "English", proficiency: "Native-level fluency" },
+      // { language: "Turkish", proficiency: "Fluent" },
+      // { language: "French", proficiency: "Intermediate" },
+    ] as Language[]
   }
 };

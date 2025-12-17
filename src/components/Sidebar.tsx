@@ -48,6 +48,22 @@ export const Sidebar = () => {
                 ))}
             </div>
          </div>
+
+         {/* Languages */}
+         {
+          portfolioData.main.languages.length > 0 && (
+            <div>
+                <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3">Languages</h2>
+                <div className="flex flex-col gap-1 text-sm font-sans text-foreground leading-relaxed">
+                  {portfolioData.main.languages.map((lang, index) => (
+                      <div key={index}>
+                        <span className="font-medium text-foreground">{lang.language}:</span> <span className="text-muted-foreground">{lang.proficiency}</span>
+                      </div>
+                  ))}
+                </div>
+            </div>
+          )
+         }
       </div>
      
       {/* Recent News - Scrollable */}

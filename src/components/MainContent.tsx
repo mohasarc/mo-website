@@ -148,6 +148,8 @@ export const MainContent = () => {
            ))}
         </div>
       </Section>
+
+
     </main>
   );
 };

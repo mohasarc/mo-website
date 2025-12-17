@@ -29,15 +29,15 @@ export interface WorkExperience {
   company: string;
   role: string;
   duration: string;
-  description: string;
-  image?: string; 
+  description: string | string[];
+  image?: string | string[]; 
 }
 
 export interface ResearchExperience {
   institution: string;
   role: string;
   duration: string;
-  description: string;
+  description: string | string[];
   image?: string;
 }
 
@@ -68,7 +68,8 @@ export const portfolioData = {
   sidebar: {
     profile: {
       name: "Mohammed Yaseen",
-      title: "Full-Stack Software Engineer\nExperienced white (or glass) boarder",
+      // title: "Full-Stack Software Engineer\nProfessional Glass-boarder",
+      title: "Full-Stack Software Engineer\nStrong on whiteboards (and glass ones)",
     },
     contact: [
       "moha.98.1900 [at] gmail.com",
@@ -152,24 +153,30 @@ what a creative professional imagines, and reality, the final implementation, by
         company: "FileMap",
         role: "Software Engineer",
         duration: "2020 - Present",
-        description: `I joined filemap from its inception and have been working on the platform ever since. 
-I have mainly worked on the viewers, the subsystem responsible for both reducing files (e.g., images, videos, 
-3D models, PDFs, etc.) into simple visuals and the rendering mechanism in the frontend. In addition, I worked 
-on many other subsystems of the platform, such as the process management system (RunnerKit) and a highly-reliable 
-multi-platform watcher system for detecting file changes.`,
+        description: [
+          `I joined FileMap at its inception and have built multiple core systems that power the platform. 
+My primary focus has been the viewers subsystem, the pipeline responsible for transforming large files 
+(images, videos, 3D models, PDFs, etc.) into fast, lightweight visuals for the frontend.  I also architected 
+the frontend rendering engine that renders 20k+ images at once while keeping everything smooth and responsive`,
+          `Beyond that, I've touched nearly every part of the stack: I built RunnerKit, our process management system 
+that keeps node.js processes and worker threads reliable; and designed a robust, cross-platform 
+file watcher for detecting changes across Windows, macOS, and Linux.`
+        ],
         image: "filemap-team.webp"
       },
       {
         company: "Freelance",
         role: "Full-stack Software Engineer",
         duration: "2022 - 2024",
-        description: `I have worked as a full-stack software engineer for various clients. On Upwork, I have a 
-success score of 100% after completing over 10 projects and 1700+ hours of work. I have worked on a wide range 
-of projects, including projects in the 3D space, AI, and web development. One notable project was 
-![logo](logos/codelab-logo.png) Codelab, a no-code web application builder, where I did over 1700+ 
-hours of contribution to the project. I worked on the frontend and backend of the application, using 
-technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
-        image: "logos/upwork.webp"
+        description: [
+          `I worked as a freelance full-stack engineer with clients across web, AI, and 3D-centric applications. 
+On Upwork, I maintained a 100% Job Success Score after completing 10+ projects and logging 1,700+ hours of work. 
+I also earned the Top Rated Plus badge, which places me in the top 3% of talents on the platform`,
+          `One notable engagement was with![logo](logos/codelab-logo.png)CodeLab, a no-code web application 
+builder, where I contributed over 1700+ hours across frontend and backend development, using technologies like Next.js, 
+Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, jest, and Cypress.`,
+        ],
+        image: ["logos/upwork.webp", 'personal/upwork-top-rated-plus-badge.webp']
       }
     ] as WorkExperience[],
 
@@ -195,7 +202,7 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         id: "pub-smart-interfaces",
         title: "A Generic and Efficient Python Runtime Verification System and its Large-scale Evaluation",
         authors: <><b>Zhuohang Shen</b>, <b className='text-primary'>Mohammed Yaseen</b>, <b>Denini Silva</b>, <b>Kevin Guan</b>, <b>Junho Lee</b>, <b>Marcelo d&apos;Amorim</b>, <b>Owolabi Legunsen</b></>,
-        venue: "TBD. 2025",
+        venue: "TBD. 2026",
         abstract: "We propose PyMOP, a generic and efficient Runtime Verification system for Python. Unlike existing attempts, PyMOP supports multiple logics and algorithms. Validated on 1,463 projects, it outperforms comparable tools by up to 1,168x and has already helped fix 44 bugs, establishing it as a robust platform for future Python RV research.",
         image: "logos/pymop-concept.png",
         links: [
@@ -208,17 +215,19 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
 
     projects: [
       {
-        name: "Waylum",
-        description: "An app that turns simple compositions/sketches into high fedility renders. Technologies like Stable Diffusion, LoRa, ControlNet, and ComfyUI were used for the image generation pipeline. Next.js, Tailwind CSS, and MobX were used for the frontend.",
+        name: "Waylum - AI-Powered Design Tool",
+        description: `An app that transforms simple compositions/sketches into high-fidelity renders. The pipeline 
+utilizes Stable Diffusion, LoRa, ControlNet, and ComfyUI for generation, with a Next.js, Tailwind CSS, 
+and MobX frontend.`,
         video: "demos/waylum-demo.mp4",
         date: "2025",
         links: [
-          // { label: "Video", url: "demos/waylum-demo.mp4" }
+          { label: "Video", url: "https://www.youtube.com/watch?v=s2tvn935FGc" }
         ]
       } as Project,
       {
-        name: "PaperBot FM",
-        description: "Designed and implemented a microservices architecture handling 1M+ concurrent users. Utilized Kubernetes and Go for high performance.",
+        name: "PaperBot FM - AI Research Discussion Platform",
+        description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
         image: "demos/PaperBotFM.png",
         date: "Comming soon...",
         links: [
@@ -226,8 +235,8 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "3D Model Configurator",
-        description: "This was developped for a client. A web app that allows users to configure 3D models. Technologies like Three.js and React were used for the frontend.",
+        name: "3D Model Configurator (client project)",
+        description: "A web app that lets users customize 3D models directly in the browser. It relies heavily on Three.js and React.",
         video: "demos/3d-configurator-demo.mp4",
         date: "2023",
         links: [
@@ -235,8 +244,8 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "ModMod",
-        description: "This was developped for a client. A web app that allows for composing AI models of different capabilities and modalities by plugging them into each other like puzzle pieces.",
+        name: "ModMod - AI Model Composer (client project)",
+        description: "A web app where users can build AI pipelines by plugging different models together like puzzle pieces, mixing and matching capabilities and modalities.",
         video: "demos/modmod-demo.mp4",
         date: "2024",
         links: [
@@ -244,18 +253,17 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "Aether",
-        description: "A reverse image search app that allows users to search for images by their visual similarity to multiple weighted input images. Built with Faiss and React.",
+        name: "Aether - Reverse Visual Search Engine",
+        description: "A reverse image search tool that lets you search using multiple weighted input images at once to find visual matches. It’s powered by Faiss for vector search and React on the frontend.",
         video: "demos/aether-short-demo.mp4",
         date: "2024",
         links: [
-          { label: "App Store", url: "#" },
-          { label: "Website", url: "#" }
+          { label: "Code", url: "https://github.com/mohasarc/image-inspired-search" },
         ]
       } as Project,
       {
-        name: "Instacook",
-        description: "This was our senior capstone project. A mobile app that allows users to find recipes based on scanned ingredients. The app was built with React Native and Firebase; and the ingredient detection was done using YOLOv7. We won the best UI/UX app award at the capstone fair.",
+        name: "Instacook - AI Recipe Finder",
+        description: "This was our senior capstone project. A mobile app that scans ingredients and suggests recipes. We used the object detection model YOLOv7 for ingredient detection and React Native for the app. We ended up winning the Best UI/UX award at the capstone fair.",
         video: "demos/instacook-demo.mp4",
         date: "2022",
         links: [  
@@ -264,17 +272,21 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "TreeViz",
-        description: "I was during the covid lockdown in 2020. it was my sophomore year and I was taking a data structures and algorithms course. I decided to spend my time visualizing tree data structures and came up with this project.",
+        name: "TreeViz - Interactive Data Structures Visualizer",
+        description: `I built this during the COVID lockdown because I was getting bored with my online 
+Data Structures course. It helps students visualize how BSTs, AVL trees, and Red-Black trees actually 
+work under the hood. The app runs on React and Node.js, but I wrote the core logic using Node C++ addons, totally 
+unnecessary, but I just wanted the challenge of learning how to bridge C++ with Node.
+`,
         video: "demos/treeviz-demo.mp4",
         date: "2020",
         links: [
-          { label: "Demo", url: "#" }
+          { label: "Video", url: "https://www.youtube.com/watch?v=vBTfkbvI63Y" }
         ]
       } as Project,
       {
-        name: "Monk Assistant",
-        description: "This was an experiment for implementing a live AI conversation system. It is basically an AI agent that calls the user's phone and has a conversation with them. It does also have the ability to perfrom actions on behalf of the user like fetching the user's calendar, or sending a message to a contact. The system was built using Nest.js for the backend and VAPI api with a custom LLM integration (GPT OSS 120B) for the live conversation system.",
+        name: "Monk Assistant - Live AI Phone Agent",
+        description: "An experimental AI agent capable of performing real-world actions. It can phone the user for a live conversation, fetch calendar events, or message contacts. Built using Nest.js, VAPI, and a custom LLM integration (GPT OSS 120B).",
         image: "demos/monk-assistant.png",
         date: "2025",
         links: [
@@ -282,8 +294,8 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "priority-task",
-        description: "This project was developped initially for FileMap, then was later released as an open-source npm package. It aims to simplify managing and executing tasks based on priority, offering features like runtime priority updates, pausing, resuming, and aborting tasks.",
+        name: "priority-task - Open-Source Task Manager",
+        description: "Originally developed for FileMap and later released as an open-source npm package. It simplifies priority-based task management, supporting runtime priority updates, pausing, resuming, and task cancellation.",
         image: "demos/priority-task.png",
         date: "2021",
         links: [
@@ -292,8 +304,8 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "workers-pool",
-        description: "I built this project as a subsystem for FileMap. It is a worker pool that allows for parallel execution of tasks. I later replaced it with a more advanced internal implementation.",
+        name: "workers-pool - Parallel Processing Library",
+        description: "I built this project as a worker pool subsystem for FileMap to enable parallel task execution. As platform requirements evolved, I later designed and implemented its replacement, a more advanced internal system that superseded this version.",
         image: "demos/workerspool-1.png",
         date: "2022",
         links: [
@@ -302,8 +314,8 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "WorkGround",
-        description: "Instead of studing for the C++ final exam, I built this app. It is a command-line tool that lets me define different 'modes' for my computer (like 'coding' or 'socializing') and instantly switch between them, automatically opening the right programs and closing the others with one command.",
+        name: "WorkGround - Developer Productivity CLI",
+        description: "Built during my sophomore year finals as a way of preparing for THE DREADED C++ exam. A command-line productivity tool for defining and switching between computer “modes,” automatically opening and closing applications with a single command.",
         image: "demos/workground-2.png",
         date: "2020",
         links: [
@@ -312,12 +324,12 @@ technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         ]
       } as Project,
       {
-        name: "supernova-chat",
-        description: "An interactive dashboard for visualizing complex financial datasets. Features real-time updates and custom filtering logic.",
+        name: "supernova-chat - Real-time Messaging App",
+        description: "A simple real-time messaging application with Google Sign-In authentication. Powered by MongoDB Atlas, using Pusher and MongoDB Change Streams for instant message synchronization.",
         video: "demos/supernova-chat-demo.mp4",
         date: "2021",
         links: [
-          { label: "Demo", url: "#" }
+          { label: "Code", url: "https://github.com/mohasarc/supernova_chat" }
         ]
       } as Project
     ]

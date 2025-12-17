@@ -49,15 +49,31 @@ export const MainContent = () => {
            {workExperience.map((work, index) => (
              <div key={index} className="flex flex-col md:flex-row gap-2 md:gap-4">
                {/* Placeholder Image */}
-               <div className="w-40 md:w-32 h-24 bg-muted shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
-                  {work.image ? (
-                    <img src={work.image} alt={work.company} className="w-full h-full object-cover" /> 
-                  ) : "Image"}
+               <div className="flex flex-row md:flex-col gap-2 shrink-0">
+                 {Array.isArray(work.image) ? (
+                    work.image.map((img, i) => (
+                      <div key={i} className="w-40 md:w-36 h-24 bg-muted border border-border shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+                        <img src={img} alt={`${work.company} ${i+1}`} className="w-full h-full object-cover" />
+                      </div>
+                    ))
+                 ) : (
+                    <div className="w-40 md:w-36 h-24 bg-muted border border-border shrink-0 rounded-sm flex items-center justify-center text-xs text-muted-foreground overflow-hidden">
+                        {work.image ? (
+                          <img src={work.image} alt={work.company} className="w-full h-full object-cover" /> 
+                        ) : "Image"}
+                    </div>
+                 )}
                </div>
                <div>
                   <h3 className="text-sm font-bold font-sans">{work.company}</h3>
                   <p className="text-xs font-bold text-muted-foreground mb-1">{work.role} <span className="font-normal text-muted-foreground">| {work.duration}</span></p>
-                  <p className="text-sm leading-relaxed">{parseMarkdown(work.description)}</p>
+                  {Array.isArray(work.description) ? (
+                    work.description.map((desc, i) => (
+                      <p key={i} className="text-sm leading-relaxed mb-2 last:mb-0">{parseMarkdown(desc)}</p>
+                    ))
+                  ) : (
+                    <p className="text-sm leading-relaxed">{parseMarkdown(work.description)}</p>
+                  )}
                </div>
              </div>
            ))}
@@ -80,7 +96,13 @@ export const MainContent = () => {
                       <div>
                         <h3 className="text-sm font-bold font-sans">{research.institution}</h3>
                         <p className="text-xs font-bold text-muted-foreground mb-1">{research.role} <span className="font-normal text-muted-foreground">| {research.duration}</span></p>
-                        <p className="text-sm leading-relaxed">{parseMarkdown(research.description)}</p>
+                        {Array.isArray(research.description) ? (
+                          research.description.map((desc, i) => (
+                            <p key={i} className="text-sm leading-relaxed mb-2 last:mb-0">{parseMarkdown(desc)}</p>
+                          ))
+                        ) : (
+                          <p className="text-sm leading-relaxed">{parseMarkdown(research.description)}</p>
+                        )}
                       </div>
                   </div>
                 </div>

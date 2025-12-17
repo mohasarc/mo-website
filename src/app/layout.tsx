@@ -74,6 +74,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Mohammed Yaseen",
+              "alternateName": ['Mo Yaseen', 'Mohammed S. Yaseen'],
               "url": "https://moyaseen.com",
               "image": "https://moyaseen.com/personal/moyaseen-profile-1.webp",
               "sameAs": [

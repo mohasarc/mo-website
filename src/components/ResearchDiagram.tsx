@@ -26,7 +26,7 @@ export const ResearchDiagram = () => {
 
   // Geometry Constants
   // Scaled up again
-  const width = 1000; 
+  const width = 700; 
   const height = 400; 
   const centerX = width / 2;
   const centerY = height / 2;
@@ -81,7 +81,7 @@ export const ResearchDiagram = () => {
 
   return (
     <div className="w-full flex justify-center mb-0 px-4 relative">
-       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-w-[1000px] font-sans">
+       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="w-full h-auto max-w-[700px] font-sans">
          {/* Draw Petals (Circles) Layer */}
          {topicPositions.map((topic) => {
            const isFaint = activeTopic && activeTopic !== topic.id;

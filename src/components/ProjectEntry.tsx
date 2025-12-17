@@ -25,11 +25,11 @@ export const ProjectEntry = ({ id, title, authors, date, description, links, ima
                   className="w-full h-full object-cover"
                   autoPlay 
                   muted 
-                  loop 
+                  loop
                   playsInline 
                  />
              ) : image ? (
-                <img src={image} alt={title} className="w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
+                <img loading='lazy' src={image} alt={title} className="w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
              ) : (
                 <span className="text-2xl">🖼️</span>
              )}

@@ -19,7 +19,7 @@ export const PublicationEntry = ({ id, title, authors, venue, abstract, links, i
       <div className="w-full sm:w-[200px] sm:shrink-0">
         <div className="aspect-[6/4] bg-muted rounded border border-border flex items-center justify-center text-muted-foreground overflow-hidden">
              {image ? (
-               <img src={image} alt={title} className="w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
+               <img loading="lazy" src={image} alt={title} className="w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
              ) : (
                <span className="text-2xl">🖼️</span>
              )}

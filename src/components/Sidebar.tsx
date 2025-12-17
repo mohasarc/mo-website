@@ -1,12 +1,21 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { portfolioData } from "../data/portfolio";
-import { ModeToggle } from './ui/mode-toggle';
 import { parseMarkdown } from "@/lib/markdown";
 
 export const Sidebar = () => {
   const { profile, contact, links, news } = portfolioData.sidebar;
+  const [avatarSrc, setAvatarSrc] = useState("/personal/moyaseen-profile-1.avif");
+
+  const handleAvatarError = () => {
+    // If the AVIF fails to load (404 or unsupported), fall back to WebP
+    if (avatarSrc.endsWith('.avif')) {
+      setAvatarSrc("/personal/moyaseen-profile-1.webp");
+    }
+  };
 
   return (
     <aside className="w-full md:w-[280px] md:shrink-0 p-6 md:pl-8 md:py-6 md:pr-3 flex flex-col gap-5 border-border relative">
@@ -14,7 +23,12 @@ export const Sidebar = () => {
       <div className="flex flex-col gap-6">
         <div>
           <Avatar className="w-40 md:w-full h-auto aspect-square rounded-sm mb-6 grayscale bg-muted">
-            <AvatarImage src="/personal/moyaseen-profile-1.webp" alt={profile.name} className="object-cover" />
+            <AvatarImage 
+              src={avatarSrc} 
+              alt={profile.name} 
+              className="object-cover"
+              onError={handleAvatarError}
+            />
             <AvatarFallback className="rounded-sm text-4xl text-muted-foreground">📸</AvatarFallback>
           </Avatar>
           

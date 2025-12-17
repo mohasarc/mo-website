@@ -99,12 +99,12 @@ export const portfolioData = {
   },
   main: {
     bio: [
-      `Hi there! 👋 I am a Software Engineer at ![logo](logos/filemap-logo.png)[FileMap](https://filemap.com), a spatial collaboration platform for creatives.
-Additionally, I'm an independent researcher collaborating with Professor [Marcelo d'Amorim](https://damorim.github.io/) from ![logo](logos/ncstate-circle-red-whtwolf.png) North Carolina State University 
-and Professor [Owolabi Legunsen](https://www.cs.cornell.edu/~legunsen/) from ![logo](logos/Cornell__C__logo.svg.png) Cornell University 
+      `Hi there! 👋 I am a Software Engineer at ![logo](logos/sm/filemap-logo.webp)[FileMap](https://filemap.com), a spatial collaboration platform for creatives.
+Additionally, I'm an independent researcher collaborating with Professor [Marcelo d'Amorim](https://damorim.github.io/) from ![logo](logos/sm/ncstate-circle-red-whtwolf.webp) North Carolina State University 
+and Professor [Owolabi Legunsen](https://www.cs.cornell.edu/~legunsen/) from ![logo](logos/sm/Cornell__C__logo.svg.webp) Cornell University 
 on improving runtime verification for Python. Previously, I participated in the UIUC+ Summer Undergraduate Research 
-program where I worked with Professor [Darko Marinov](https://mir.cs.illinois.edu/marinov/) from ![logo](logos/uiuc-logo.webp) the University of Illinois at Urbana-Champaign 
-on flaky tests detection in Java. I received my B.S. in Computer Engineering from ![logo](logos/bilkent-ing-amblem.png) Bilkent University in Ankara, Turkey.`,
+program where I worked with Professor [Darko Marinov](https://mir.cs.illinois.edu/marinov/) from ![logo](logos/sm/uiuc-logo.webp) the University of Illinois at Urbana-Champaign 
+on flaky tests detection in Java. I received my B.S. in Computer Engineering from ![logo](logos/sm/bilkent.webp) Bilkent University in Ankara, Turkey.`,
 `I am well-versed in Full Stack Development using technologies such as Next.js, React, Nest.js, Node.js, Postgres, Convex, Tailwind CSS, Electron.js, GraphQL, WebGL, Neo4j. Additionally, I am experienced in agentic AI and machine learning using technologies such as LangChain, LangGraph, OpenAI API, Google Generative AI, and Hugging Face.`,
       
 `Outside of engineering, I enjoy [graphic design](https://www.behance.net/myds) 🎨 and swimming 🏊.`
@@ -182,11 +182,11 @@ file watcher for detecting changes across Windows, macOS, and Linux.`
           `I worked as a freelance full-stack engineer with clients across web, AI, and 3D-centric applications. 
 On Upwork, I maintained a 100% Job Success Score after completing 10+ projects and logging 1,700+ hours of work. 
 I also earned the Top Rated Plus badge, which places me in the top 3% of talent on the platform`,
-          `One notable engagement was with![logo](logos/codelab-logo.png)CodeLab, a no-code web application 
+          `One notable engagement was with![logo](logos/sm/codelab-logo-sm.webp)CodeLab, a no-code web application 
 builder, where I contributed 1,700+ hours across frontend and backend development, using technologies like Next.js, 
 Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
         ],
-        image: ["logos/upwork.webp", 'personal/upwork-top-rated-plus-badge.webp']
+        image: ["logos/lg/upwork.webp", 'personal/upwork-top-rated-plus-badge.webp']
       }
     ] as WorkExperience[],
 
@@ -214,7 +214,7 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
         authors: <><b>Zhuohang Shen</b>, <b className='text-primary'>Mohammed Yaseen</b>, <b>Denini Silva</b>, <b>Kevin Guan</b>, <b>Junho Lee</b>, <b>Marcelo d&apos;Amorim</b>, <b>Owolabi Legunsen</b></>,
         venue: "TBD. 2026",
         abstract: "We propose PyMOP, a generic and efficient Runtime Verification system for Python. Unlike existing attempts, PyMOP supports multiple logics and algorithms. Validated on 1,463 projects, it outperforms comparable tools by up to 1,168x and has already helped fix 44 bugs, establishing it as a robust platform for future Python RV research.",
-        image: "logos/pymop-concept.png",
+        image: "logos/lg/pymop-concept.png",
         links: [
           { label: "PDF", url: "https://arxiv.org/pdf/2509.06324" },
           // { label: "Code", url: "#" },
@@ -230,7 +230,7 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
         description: `An app that transforms simple compositions/sketches into high-fidelity renders. The pipeline 
 utilizes Stable Diffusion, LoRa, ControlNet, and ComfyUI for generation, with a Next.js, Tailwind CSS, 
 and MobX frontend.`,
-        video: "demos/waylum-demo.mp4",
+        video: "demos/vids/small/waylum-demo-small.mp4",
         date: "2025",
         links: [
           { label: "Video", url: "https://www.youtube.com/watch?v=s2tvn935FGc" }
@@ -240,7 +240,7 @@ and MobX frontend.`,
         id: "proj-paperbot",
         name: "PaperBot FM - AI Research Discussion Platform",
         description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
-        image: "demos/PaperBotFM.png",
+        image: "demos/imgs/webp/PaperBotFM.webp",
         date: "Comming soon...",
         links: [
           // { label: "Video", url: "demos/waylum-demo.mov" }
@@ -250,7 +250,7 @@ and MobX frontend.`,
         id: "proj-3d-model-config",
         name: "3D Model Configurator (client project)",
         description: "A web app that lets users customize 3D models directly in the browser. It relies heavily on Three.js and React.",
-        video: "demos/3d-configurator-demo.mp4",
+        video: "demos/vids/small/3d-configurator-demo-small.mp4",
         date: "2023",
         links: [
           // { label: "Video", url: "demos/waylum-demo.mov" }
@@ -260,7 +260,7 @@ and MobX frontend.`,
         id: "proj-modmod",
         name: "ModMod - AI Model Composer (client project)",
         description: "A web app where users can build AI pipelines by plugging different models together like puzzle pieces, mixing and matching capabilities and modalities.",
-        video: "demos/modmod-demo.mp4",
+        video: "demos/vids/small/modmod-demo-small.mp4",
         date: "2024",
         links: [
           // { label: "Video", url: "demos/waylum-demo.mov" }
@@ -270,7 +270,7 @@ and MobX frontend.`,
         id: "proj-aether",
         name: "Aether - Reverse Visual Search Engine",
         description: "A reverse image search tool that lets you search using multiple weighted input images at once to find visual matches. It’s powered by Faiss for vector search and React on the frontend.",
-        video: "demos/aether-short-demo.mp4",
+        video: "demos/vids/small/aether-short-demo-small.mp4",
         date: "2024",
         links: [
           { label: "Code", url: "https://github.com/mohasarc/image-inspired-search" },
@@ -280,7 +280,7 @@ and MobX frontend.`,
         id: "proj-instacook",
         name: "Instacook - AI Recipe Finder",
         description: "This was our senior capstone project. A mobile app that scans ingredients and suggests recipes. We used the object detection model YOLOv7 for ingredient detection and React Native for the app. We ended up winning the Best UI/UX award at the capstone fair.",
-        video: "demos/instacook-demo.mp4",
+        video: "demos/vids/small/instacook-demo-small.mp4",
         date: "2022",
         links: [  
           { label: "Video", url: "https://www.youtube.com/watch?v=YSEf-RcxMu0" },
@@ -295,7 +295,7 @@ Data Structures course. It helps students visualize how BSTs, AVL trees, and Red
 work under the hood. The app runs on React and Node.js, but I wrote the core logic using Node C++ addons, totally 
 unnecessary, but I just wanted the challenge of learning how to bridge C++ with Node.
 `,
-        video: "demos/treeviz-demo.mp4",
+        video: "demos/vids/small/treeviz-demo-small.mp4",
         date: "2020",
         links: [
           { label: "Video", url: "https://www.youtube.com/watch?v=vBTfkbvI63Y" }
@@ -305,7 +305,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         id: "proj-monk-assistant",
         name: "Monk Assistant - Live AI Phone Agent",
         description: "An experimental AI agent capable of performing real-world actions. It can phone the user for a live conversation, fetch calendar events, or message contacts. Built using Nest.js, VAPI, and a custom LLM integration (GPT OSS 120B).",
-        image: "demos/monk-assistant.png",
+        image: "demos/imgs/webp/monk-assistant.webp",
         date: "2025",
         links: [
           { label: "Demo", url: "#" }
@@ -315,7 +315,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         id: "proj-priority-task",
         name: "priority-task - Open-Source Task Manager",
         description: "Originally developed for FileMap and later released as an open-source npm package. It simplifies priority-based task management, supporting runtime priority updates, pausing, resuming, and task cancellation.",
-        image: "demos/priority-task.png",
+        image: "demos/imgs/webp/priority-task.webp",
         date: "2021",
         links: [
           { label: "Code", url: "https://github.com/FileMap/priority-task" },
@@ -326,7 +326,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         id: "proj-workers-pool",
         name: "workers-pool - Parallel Processing Library",
         description: "I built this project as a worker pool subsystem for FileMap to enable parallel task execution. As platform requirements evolved, I later designed and implemented its replacement, a more advanced internal system that superseded this version.",
-        image: "demos/workerspool-1.png",
+        image: "demos/imgs/webp/workerspool-1.webp",
         date: "2022",
         links: [
           { label: "Code", url: "https://github.com/mohasarc/workers-pool" },
@@ -337,7 +337,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         id: "proj-workground",
         name: "WorkGround - Developer Productivity CLI",
         description: "Built during my sophomore year finals as a way of preparing for THE DREADED C++ exam. A command-line productivity tool for defining and switching between computer “modes,” automatically opening and closing applications with a single command.",
-        image: "demos/workground-2.png",
+        image: "demos/imgs/webp/workground-2.webp",
         date: "2020",
         links: [
           { label: "Video", url: "https://www.youtube.com/watch?v=LtrBkidOaDs" },
@@ -348,7 +348,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         id: "proj-supernova-chat",
         name: "supernova-chat - Real-time Messaging App",
         description: "A simple real-time messaging application with Google Sign-In authentication. Powered by MongoDB Atlas, using Pusher and MongoDB Change Streams for instant message synchronization.",
-        video: "demos/supernova-chat-demo.mp4",
+        video: "demos/vids/small/supernova-chat-demo-small.mp4",
         date: "2021",
         links: [
           { label: "Code", url: "https://github.com/mohasarc/supernova_chat" }

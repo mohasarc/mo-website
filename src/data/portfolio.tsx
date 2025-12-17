@@ -42,6 +42,7 @@ export interface ResearchExperience {
 }
 
 export interface Project {
+  id?: string;
   name: string;
   description: string;
   link?: string;
@@ -110,40 +111,45 @@ what a creative professional imagines, and reality, the final implementation, by
       topics: [
         { id: "ai", label: "AI", color: "#FFD6A5" },
         { id: "design", label: "Design", color: "#FFADAD" },
-        { id: "systems", label: "Systems", color: "#A0C4FF" },
-        { id: "web", label: "3D", color: "#CAFFBF" },
-        { id: "data", label: "Data", color: "#FFC6FF" },
+        { id: "verification", label: "SW\nVerification", color: "#A0C4FF" },
+        { id: "3d", label: "3D", color: "#CAFFBF" },
+        { id: "systems", label: "Systems", color: "#FFC6FF" },
       ] as DiagramTopic[],
       pointers: [
-        { 
+        {
           topicIds: ["ai", "design"],
           items: [
-             { label: "Smart Interfaces, CHI '24", targetId: "pub-smart-interfaces" },
-             { label: "Adaptive UI", targetId: "proj-adaptive-ui" }
+             { label: "Waylum", targetId: "proj-waylum" },
+             { label: "Instacook", targetId: "proj-instacook" },
+            ]
+          },
+          { 
+            topicIds: ["ai", "systems"],
+            items: [
+              //  { label: "PaperBot FM", targetId: "proj-paperbot" },
+              { label: "ModMod", targetId: "proj-modmod" },
+            { label: "Aether", targetId: "proj-aether" },
+            //  { label: "Monk Assistant", targetId: "proj-monk-assistant" },
           ]
         },
         { 
-          topicIds: ["ai", "data"],
-          items: [{ label: "Data Insight, KDD '23", targetId: "pub-data-insight" }]
-        },
-        { 
-           topicIds: ["design", "web"],
-           items: [{ label: "Web Accessibility, UIST '23", targetId: "pub-web-accessibility" }],
+           topicIds: ["3d"],
+           items: [{ label: "3D Configurator", targetId: "proj-3d-model-config" }],
            angleOffset: -10
         },
         { 
+           topicIds: ["verification"],
+           items: [{ label: "PyMOP - Python RV System", targetId: "pub-pymop" }],
+           angleOffset: 10
+        },
+        { 
            topicIds: ["systems"],
-           items: [{ label: "Scalable Backend", targetId: "proj-scalable-backend" }],
-           angleOffset: 10,
+           items: [
+              // { label: "TreeViz", targetId: "proj-treeviz" },
+              { label: "priority-task", targetId: "proj-priority-task" },
+              { label: "workers-pool", targetId: "proj-workers-pool" }
+           ],
            distanceOffset: 20
-        },
-        { 
-           topicIds: ["data", "web"],
-           items: [{ label: "Visual Analytics", targetId: "proj-visual-analytics" }]
-        },
-        { 
-           topicIds: ["ai", "systems"],
-           items: [{ label: "Distributed ML, NeurIPS '24", targetId: "pub-distributed-ml" }]
         },
       ] as DiagramPointer[]
     },
@@ -199,7 +205,7 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, jest, and Cypress.`,
     
     publications: [
       {
-        id: "pub-smart-interfaces",
+        id: "pub-pymop",
         title: "A Generic and Efficient Python Runtime Verification System and its Large-scale Evaluation",
         authors: <><b>Zhuohang Shen</b>, <b className='text-primary'>Mohammed Yaseen</b>, <b>Denini Silva</b>, <b>Kevin Guan</b>, <b>Junho Lee</b>, <b>Marcelo d&apos;Amorim</b>, <b>Owolabi Legunsen</b></>,
         venue: "TBD. 2026",
@@ -215,6 +221,7 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, jest, and Cypress.`,
 
     projects: [
       {
+        id: "proj-waylum",
         name: "Waylum - AI-Powered Design Tool",
         description: `An app that transforms simple compositions/sketches into high-fidelity renders. The pipeline 
 utilizes Stable Diffusion, LoRa, ControlNet, and ComfyUI for generation, with a Next.js, Tailwind CSS, 
@@ -226,6 +233,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-paperbot",
         name: "PaperBot FM - AI Research Discussion Platform",
         description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
         image: "demos/PaperBotFM.png",
@@ -235,6 +243,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-3d-model-config",
         name: "3D Model Configurator (client project)",
         description: "A web app that lets users customize 3D models directly in the browser. It relies heavily on Three.js and React.",
         video: "demos/3d-configurator-demo.mp4",
@@ -244,6 +253,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-modmod",
         name: "ModMod - AI Model Composer (client project)",
         description: "A web app where users can build AI pipelines by plugging different models together like puzzle pieces, mixing and matching capabilities and modalities.",
         video: "demos/modmod-demo.mp4",
@@ -253,6 +263,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-aether",
         name: "Aether - Reverse Visual Search Engine",
         description: "A reverse image search tool that lets you search using multiple weighted input images at once to find visual matches. It’s powered by Faiss for vector search and React on the frontend.",
         video: "demos/aether-short-demo.mp4",
@@ -262,6 +273,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-instacook",
         name: "Instacook - AI Recipe Finder",
         description: "This was our senior capstone project. A mobile app that scans ingredients and suggests recipes. We used the object detection model YOLOv7 for ingredient detection and React Native for the app. We ended up winning the Best UI/UX award at the capstone fair.",
         video: "demos/instacook-demo.mp4",
@@ -272,6 +284,7 @@ and MobX frontend.`,
         ]
       } as Project,
       {
+        id: "proj-treeviz",
         name: "TreeViz - Interactive Data Structures Visualizer",
         description: `I built this during the COVID lockdown because I was getting bored with my online 
 Data Structures course. It helps students visualize how BSTs, AVL trees, and Red-Black trees actually 
@@ -285,6 +298,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         ]
       } as Project,
       {
+        id: "proj-monk-assistant",
         name: "Monk Assistant - Live AI Phone Agent",
         description: "An experimental AI agent capable of performing real-world actions. It can phone the user for a live conversation, fetch calendar events, or message contacts. Built using Nest.js, VAPI, and a custom LLM integration (GPT OSS 120B).",
         image: "demos/monk-assistant.png",
@@ -294,6 +308,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         ]
       } as Project,
       {
+        id: "proj-priority-task",
         name: "priority-task - Open-Source Task Manager",
         description: "Originally developed for FileMap and later released as an open-source npm package. It simplifies priority-based task management, supporting runtime priority updates, pausing, resuming, and task cancellation.",
         image: "demos/priority-task.png",
@@ -304,6 +319,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         ]
       } as Project,
       {
+        id: "proj-workers-pool",
         name: "workers-pool - Parallel Processing Library",
         description: "I built this project as a worker pool subsystem for FileMap to enable parallel task execution. As platform requirements evolved, I later designed and implemented its replacement, a more advanced internal system that superseded this version.",
         image: "demos/workerspool-1.png",
@@ -314,6 +330,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         ]
       } as Project,
       {
+        id: "proj-workground",
         name: "WorkGround - Developer Productivity CLI",
         description: "Built during my sophomore year finals as a way of preparing for THE DREADED C++ exam. A command-line productivity tool for defining and switching between computer “modes,” automatically opening and closing applications with a single command.",
         image: "demos/workground-2.png",
@@ -324,6 +341,7 @@ unnecessary, but I just wanted the challenge of learning how to bridge C++ with 
         ]
       } as Project,
       {
+        id: "proj-supernova-chat",
         name: "supernova-chat - Real-time Messaging App",
         description: "A simple real-time messaging application with Google Sign-In authentication. Powered by MongoDB Atlas, using Pusher and MongoDB Change Streams for instant message synchronization.",
         video: "demos/supernova-chat-demo.mp4",

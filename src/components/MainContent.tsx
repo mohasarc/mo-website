@@ -118,7 +118,7 @@ export const MainContent = () => {
           {publications.map((pub, index) => (
             <PublicationEntry 
               key={index}
-              id={`doc-${slugify(pub.title)}`}
+              id={pub.id || `doc-${slugify(pub.title)}`}
               title={pub.title}
               authors={pub.authors}
               venue={pub.venue}
@@ -136,7 +136,7 @@ export const MainContent = () => {
            {projects.map((project, idx) => (
              <ProjectEntry 
                 key={idx}
-                id={`pr-${slugify(project.name)}`}
+                id={project.id || `pr-${slugify(project.name)}`}
                 title={project.name}
                 authors={project.authors}
                 date={project.date}

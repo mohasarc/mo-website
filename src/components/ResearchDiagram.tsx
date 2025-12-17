@@ -178,16 +178,24 @@ export const ResearchDiagram = () => {
          {topicPositions.map((topic) => {
             const isFaint = activeTopic && activeTopic !== topic.id;
             return (
-              <text 
-                key={`text-${topic.id}`} 
-                x={topic.cx} y={topic.cy} 
-                className={`font-bold text-[16px] pointer-events-none uppercase tracking-widest ${theme === 'colorful' ? 'fill-white' : 'fill-foreground'}`}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                style={{ opacity: isFaint ? 0.2 : 1, transition: 'opacity 0.3s' }}
-              >
-                {topic.label}
-              </text>
+               <text 
+                 key={`text-${topic.id}`} 
+                 x={topic.cx} y={topic.cy} 
+                 className={`font-bold text-[16px] pointer-events-none uppercase tracking-widest ${theme === 'colorful' ? 'fill-white' : 'fill-foreground'}`}
+                 textAnchor="middle"
+                 dominantBaseline="middle"
+                 style={{ opacity: isFaint ? 0.2 : 1, transition: 'opacity 0.3s' }}
+               >
+                 {topic.label.split('\n').map((line, i, arr) => (
+                    <tspan 
+                        key={i} 
+                        x={topic.cx} 
+                        dy={i === 0 ? `${-(arr.length - 1) * 0.8}em` : "1.8em"}
+                    >
+                        {line}
+                    </tspan>
+                 ))}
+               </text>
             );
          })}
          

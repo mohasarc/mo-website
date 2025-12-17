@@ -1,6 +1,9 @@
-import { portfolioData } from "../data/portfolio";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React from 'react';
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { portfolioData } from "../data/portfolio";
+import { ModeToggle } from './ui/mode-toggle';
+import { parseMarkdown } from "@/lib/markdown";
 
 export const Sidebar = () => {
   const { profile, contact, links, news } = portfolioData.sidebar;
@@ -57,7 +60,7 @@ export const Sidebar = () => {
                 <li key={index} className="text-sm leading-snug">
                   <div className="mb-1">
                     <span className="font-bold block text-muted-foreground mb-1 text-xs">{item.date}</span>
-                    <span className="text-foreground">{item.content}</span>
+                    <span className="text-foreground">{parseMarkdown(item.content)}</span>
                   </div>
                 </li>
               ))}

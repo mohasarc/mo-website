@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { parseMarkdown } from "@/lib/markdown";
 
 interface PublicationEntryProps {
   id?: string;
@@ -37,7 +38,7 @@ export const PublicationEntry = ({ id, title, authors, venue, abstract, links, i
           {venue}
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-1">
-          {abstract}
+          {parseMarkdown(abstract)}
         </p>
         
         {/* Buttons */}

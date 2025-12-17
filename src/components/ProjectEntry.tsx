@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { parseMarkdown } from "@/lib/markdown";
 
 interface ProjectEntryProps {
   id?: string;
@@ -44,7 +45,7 @@ export const ProjectEntry = ({ id, title, authors, date, description, links, ima
           {authors} {date && <span className="text-muted-foreground">| {date}</span>}
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-1">
-          {description}
+          {parseMarkdown(description)}
         </p>
         
         {/* Buttons */}

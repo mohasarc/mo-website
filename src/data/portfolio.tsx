@@ -163,7 +163,12 @@ multi-platform watcher system for detecting file changes.`,
         company: "Freelance",
         role: "Full-stack Software Engineer",
         duration: "2022 - 2024",
-        description: "I have worked as a full-stack software engineer for various clients. On Upwork, I have a success score of 100% after completing over 10 projects and 1700+ hours of work. I have worked on a wide range of projects, including projects in the 3D space, AI, and web development. One notable project was ![logo](logos/upwork.webp) Codelab, a no-code web application builder, where I did over 1700+ hours of contribution to the project. I worked on the frontend and backend of the application, using technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.",
+        description: `I have worked as a full-stack software engineer for various clients. On Upwork, I have a 
+success score of 100% after completing over 10 projects and 1700+ hours of work. I have worked on a wide range 
+of projects, including projects in the 3D space, AI, and web development. One notable project was 
+![logo](logos/codelab-logo.png) Codelab, a no-code web application builder, where I did over 1700+ 
+hours of contribution to the project. I worked on the frontend and backend of the application, using 
+technologies like Next.js, Tailwind CSS, MobX, GraphQL, Nest.js, and Neo4j.`,
         image: "logos/upwork.webp"
       }
     ] as WorkExperience[],
@@ -211,15 +216,15 @@ multi-platform watcher system for detecting file changes.`,
           // { label: "Video", url: "demos/waylum-demo.mp4" }
         ]
       } as Project,
-      // {
-      //   name: "Synapcast",
-      //   description: "Designed and implemented a microservices architecture handling 1M+ concurrent users. Utilized Kubernetes and Go for high performance.",
-      //   video: "demos/synapcast-demo.mp4",
-      //   date: "2025",
-      //   links: [
-      //     // { label: "Video", url: "demos/waylum-demo.mov" }
-      //   ]
-      // } as Project,
+      {
+        name: "PaperBot FM",
+        description: "Designed and implemented a microservices architecture handling 1M+ concurrent users. Utilized Kubernetes and Go for high performance.",
+        image: "demos/PaperBotFM.png",
+        date: "Comming soon...",
+        links: [
+          // { label: "Video", url: "demos/waylum-demo.mov" }
+        ]
+      } as Project,
       {
         name: "3D Model Configurator",
         description: "This was developped for a client. A web app that allows users to configure 3D models. Technologies like Three.js and React were used for the frontend.",

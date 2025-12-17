@@ -214,7 +214,7 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
         authors: <><b>Zhuohang Shen</b>, <b className='text-primary'>Mohammed Yaseen</b>, <b>Denini Silva</b>, <b>Kevin Guan</b>, <b>Junho Lee</b>, <b>Marcelo d&apos;Amorim</b>, <b>Owolabi Legunsen</b></>,
         venue: "TBD. 2026",
         abstract: "We propose PyMOP, a generic and efficient Runtime Verification system for Python. Unlike existing attempts, PyMOP supports multiple logics and algorithms. Validated on 1,463 projects, it outperforms comparable tools by up to 1,168x and has already helped fix 44 bugs, establishing it as a robust platform for future Python RV research.",
-        image: "logos/lg/pymop-concept.png",
+        image: "logos/lg/pymop-concept.webp",
         links: [
           { label: "PDF", url: "https://arxiv.org/pdf/2509.06324" },
           // { label: "Code", url: "#" },

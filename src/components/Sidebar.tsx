@@ -10,8 +10,8 @@ export const Sidebar = () => {
       {/* Profile Header - Image Only (Name moved to Layout) */}
       <div className="flex flex-col gap-6">
         <div>
-          <Avatar className="w-40 md:w-full h-auto aspect-square rounded-sm mb-6 grayscale contrast-125 bg-muted">
-            <AvatarImage src="/profile.jpg" alt={profile.name} className="object-cover" />
+          <Avatar className="w-40 md:w-full h-auto aspect-square rounded-sm mb-6 grayscale bg-muted">
+            <AvatarImage src="/personal/moyaseen-profile-1.webp" alt={profile.name} className="object-cover" />
             <AvatarFallback className="rounded-sm text-4xl text-muted-foreground">📸</AvatarFallback>
           </Avatar>
           
@@ -48,21 +48,23 @@ export const Sidebar = () => {
       </div>
      
       {/* Recent News - Scrollable */}
-       <div>
-        <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3">Recent News</h2>
-        <ScrollArea className="h-[400px] w-full pr-4">
-          <ul className="flex flex-col gap-4">
-            {news.map((item, index) => (
-              <li key={index} className="text-sm leading-snug">
-                 <div className="mb-1">
-                   <span className="font-bold block text-muted-foreground mb-1 text-xs">{item.date}</span>
-                   <span className="text-foreground">{item.content}</span>
-                 </div>
-              </li>
-            ))}
-          </ul>
-        </ScrollArea>
-      </div>
+      {
+        news.length > 0 && <div>
+          <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-3">Recent News</h2>
+          <ScrollArea className="h-[400px] w-full pr-4">
+            <ul className="flex flex-col gap-4">
+              {news.map((item, index) => (
+                <li key={index} className="text-sm leading-snug">
+                  <div className="mb-1">
+                    <span className="font-bold block text-muted-foreground mb-1 text-xs">{item.date}</span>
+                    <span className="text-foreground">{item.content}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </ScrollArea>
+        </div>
+      }
 
     </aside>
   );

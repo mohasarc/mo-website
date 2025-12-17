@@ -8,16 +8,20 @@ interface PublicationEntryProps {
   venue: string;
   abstract: string;
   links: { label: string; url: string }[];
+  image?: string;
 }
 
-export const PublicationEntry = ({ id, title, authors, venue, abstract, links }: PublicationEntryProps) => {
+export const PublicationEntry = ({ id, title, authors, venue, abstract, links, image }: PublicationEntryProps) => {
   return (
     <div id={id} className="flex flex-col sm:flex-row gap-4 mb-4 scroll-mt-20">
       {/* Thumbnail */}
       <div className="w-full sm:w-[200px] sm:shrink-0">
-        <div className="aspect-[6/4] bg-muted rounded border border-border flex items-center justify-center text-muted-foreground">
-             {/* Placeholder for project image */}
-             <span className="text-2xl">🖼️</span>
+        <div className="aspect-[6/4] bg-muted rounded border border-border flex items-center justify-center text-muted-foreground overflow-hidden">
+             {image ? (
+               <img src={image} alt={title} className="w-full h-full object-cover transition-transform hover:scale-105 duration-500" />
+             ) : (
+               <span className="text-2xl">🖼️</span>
+             )}
         </div>
       </div>
 

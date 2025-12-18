@@ -85,7 +85,7 @@ export const portfolioData = {
     links: [
       { label: "GitHub", url: "https://github.com/mohasarc", icon: <FaGithub /> },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/mohasy/", icon: <FaLinkedin className="text-blue-700" /> },
-      { label: "UpWork", url: "https://freelancerprofilenuxt.mesh.prod.platform.usw2.upwork/freelancers/~01f49cf3f56619fe1d?mp_source=share", icon: <FaUpwork /> },
+      { label: "UpWork", url: "https://www.upwork.com/freelancers/~01f49cf3f56619fe1d?mp_source=share", icon: <FaUpwork /> },
       { label: "Behance", url: "https://www.behance.net/myds", icon: <FaBehance /> },
       { label: "Resume / CV", url: "/personal/Mohammed_S_Yaseen__Software_Engineer.pdf", icon: <FaFilePdf className="text-red-500" /> },
       // { label: "Twitter / X", url: "#", icon: <FaTwitter className="text-blue-400" /> },

@@ -240,7 +240,7 @@ and MobX frontend.`,
         id: "proj-paperbot",
         name: "PaperBot FM - AI Research Discussion Platform",
         description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
-        image: "demos/imgs/webp/PaperBotFM.webp",
+        image: "demos/imgs/webp/paperbot-fm.webp",
         date: "Comming soon...",
         links: [
           // { label: "Video", url: "demos/waylum-demo.mov" }

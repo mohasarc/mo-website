@@ -241,9 +241,9 @@ and MobX frontend.`,
         name: "PaperBot FM - AI Research Discussion Platform",
         description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
         image: "demos/imgs/webp/paperbot-fm.webp",
-        date: "Comming soon...",
+        date: "in progress...",
         links: [
-          // { label: "Video", url: "demos/waylum-demo.mov" }
+          { label: "Website", url: "https://paperbot-fm-web-o7wo.vercel.app/" }
         ]
       } as Project,
       {

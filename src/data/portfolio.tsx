@@ -224,6 +224,16 @@ Tailwind CSS, MobX, GraphQL, Nest.js, Neo4j, Jest, and Cypress.`,
     ] as Publication[],
 
     projects: [
+            {
+        id: "proj-paperbot",
+        name: "PaperBot FM - AI Research Discussion Platform",
+        description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
+        video: "demos/vids/small/paperbot-demo-small.mp4",
+        date: "2026",
+        links: [
+          { label: "Website", url: "https://www.trypaperbot.com/" }
+        ]
+      } as Project,
       {
         id: "proj-waylum",
         name: "Waylum - AI-Powered Design Tool",
@@ -234,16 +244,6 @@ and MobX frontend.`,
         date: "2025",
         links: [
           { label: "Video", url: "https://www.youtube.com/watch?v=s2tvn935FGc" }
-        ]
-      } as Project,
-      {
-        id: "proj-paperbot",
-        name: "PaperBot FM - AI Research Discussion Platform",
-        description: `Making multiple LLMs discuss research papers so I don't have to read them.`,
-        image: "demos/imgs/webp/paperbot-fm.webp",
-        date: "in progress...",
-        links: [
-          { label: "Website", url: "https://paperbot-fm-web-o7wo.vercel.app/" }
         ]
       } as Project,
       {

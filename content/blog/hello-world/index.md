@@ -36,11 +36,11 @@ graph LR
 
 ## Images
 
-![Alt text](/blog/hello-world/my-image.webp)
+*Place images in `public/blog/hello-world/` and reference them like: `![Alt text](/blog/hello-world/photo.webp)`*
 
 ## Videos
 
-<video src="/blog/hello-world/demo.mp4" autoPlay muted loop playsInline />
+*Place videos in `public/blog/hello-world/` and embed them like: `<video src="/blog/hello-world/demo.mp4" controls />`*
 
 ## Tables
 

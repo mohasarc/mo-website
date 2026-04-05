@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx-components";
 import remarkGfm from "remark-gfm";
 import rehypeShiki from "@shikijs/rehype";
+import rehypeMermaid from "@/lib/rehype-mermaid";
 import { getPostBySlug, getAllSlugs } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { ModeToggle } from "@/components/ui/mode-toggle";
@@ -86,6 +87,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             mdxOptions: {
               remarkPlugins: [remarkGfm],
               rehypePlugins: [
+                rehypeMermaid,
                 [
                   rehypeShiki,
                   {

@@ -13,7 +13,7 @@ describe("mdxComponents", () => {
   it("exports mappings for all expected elements", () => {
     const expectedElements = [
       "h1", "h2", "h3", "h4", "p", "a", "blockquote",
-      "code", "pre", "table", "th", "td", "img", "ul", "ol", "hr",
+      "code", "pre", "table", "th", "td", "img", "ul", "ol", "hr", "div",
     ];
     for (const el of expectedElements) {
       expect(mdxComponents[el]).toBeDefined();
@@ -59,25 +59,21 @@ describe("mdxComponents", () => {
     expect(el).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("pre renders Mermaid when data-language is mermaid (Shiki output)", () => {
-    const Pre = mdxComponents.pre as React.FC<Record<string, unknown>>;
-    render(
-      <Pre data-language="mermaid">
-        <code>
-          <span className="line">
-            <span>graph LR</span>
-          </span>
-          <span className="line">
-            <span>{"    A --> B"}</span>
-          </span>
-        </code>
-      </Pre>
-    );
+  it("div renders Mermaid when data-mermaid is true", () => {
+    const Div = mdxComponents.div as React.FC<Record<string, unknown>>;
+    render(<Div data-mermaid="true">{"graph LR\n    A --> B"}</Div>);
     expect(screen.getByTestId("mermaid-mock")).toBeInTheDocument();
     expect(screen.getByTestId("mermaid-mock")).toHaveTextContent("graph LR");
   });
 
-  it("pre renders normal pre for non-mermaid code blocks", () => {
+  it("div renders normal div when data-mermaid is absent", () => {
+    const Div = mdxComponents.div as React.FC<React.ComponentPropsWithoutRef<"div">>;
+    const { container } = render(<Div>Regular content</Div>);
+    expect(container.querySelector("div")).toBeInTheDocument();
+    expect(screen.queryByTestId("mermaid-mock")).not.toBeInTheDocument();
+  });
+
+  it("pre renders normal pre for code blocks", () => {
     const Pre = mdxComponents.pre as React.FC<React.ComponentPropsWithoutRef<"pre">>;
     const { container } = render(
       <Pre>
@@ -85,7 +81,6 @@ describe("mdxComponents", () => {
       </Pre>
     );
     expect(container.querySelector("pre")).toBeInTheDocument();
-    expect(screen.queryByTestId("mermaid-mock")).not.toBeInTheDocument();
   });
 
   it("pre merges custom className with Shiki className", () => {

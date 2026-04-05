@@ -1,20 +1,7 @@
 import type { MDXComponents } from "mdx/types";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 import Mermaid from "./Mermaid";
-
-/** Recursively extract raw text from a React node tree (e.g. Shiki spans). */
-function extractText(node: ReactNode): string {
-  if (typeof node === "string") return node;
-  if (typeof node === "number") return String(node);
-  if (node == null || typeof node === "boolean") return "";
-  if (Array.isArray(node)) return node.map(extractText).join("");
-  if (typeof node === "object" && "props" in node) {
-    const props = node.props as Record<string, unknown>;
-    return extractText(props.children as ReactNode);
-  }
-  return "";
-}
 
 export const mdxComponents: MDXComponents = {
   h1: ({ className, ...props }: ComponentPropsWithoutRef<"h1">) => (
@@ -92,26 +79,26 @@ export const mdxComponents: MDXComponents = {
     children,
     className,
     ...props
-  }: ComponentPropsWithoutRef<"pre"> & {
-    "data-language"?: string;
-  }) => {
-    // Detect mermaid: Shiki sets data-language on <pre>, or original className on <code>
-    const dataLanguage = props["data-language"];
-    if (dataLanguage === "mermaid") {
-      return <Mermaid chart={extractText(children)} />;
+  }: ComponentPropsWithoutRef<"pre">) => (
+    <pre
+      className={cn(
+        "rounded-lg border border-border overflow-x-auto p-4 my-4 [&>code]:bg-transparent [&>code]:p-0 [&>code]:rounded-none",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </pre>
+  ),
+  // Mermaid blocks are converted to <div data-mermaid> by rehype-mermaid before Shiki
+  div: ({
+    children,
+    ...props
+  }: ComponentPropsWithoutRef<"div"> & { "data-mermaid"?: string }) => {
+    if (props["data-mermaid"] === "true") {
+      return <Mermaid chart={typeof children === "string" ? children : ""} />;
     }
-
-    return (
-      <pre
-        className={cn(
-          "rounded-lg border border-border overflow-x-auto p-4 my-4 [&>code]:bg-transparent [&>code]:p-0 [&>code]:rounded-none",
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </pre>
-    );
+    return <div {...props}>{children}</div>;
   },
   table: (props: ComponentPropsWithoutRef<"table">) => (
     <div className="overflow-x-auto my-4">

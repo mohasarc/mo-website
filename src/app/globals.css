@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant colorful (&:is(.colorful *));
 
 @theme inline {
   --color-background: var(--background);
@@ -188,6 +189,25 @@ html.colorful body {
   0% { background-position: 0 0, 0% 50%; }
   50% { background-position: 0 0, 100% 50%; }
   100% { background-position: 0 0, 0% 50%; }
+}
+
+/* Shiki dual-theme support */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+.colorful .shiki,
+.colorful .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }
 
 @layer base {

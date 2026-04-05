@@ -59,11 +59,18 @@ describe("mdxComponents", () => {
     expect(el).toHaveAttribute("rel", "noopener noreferrer");
   });
 
-  it("pre renders Mermaid component for language-mermaid code blocks", () => {
-    const Pre = mdxComponents.pre as React.FC<React.ComponentPropsWithoutRef<"pre">>;
+  it("pre renders Mermaid when data-language is mermaid (Shiki output)", () => {
+    const Pre = mdxComponents.pre as React.FC<Record<string, unknown>>;
     render(
-      <Pre>
-        <code className="language-mermaid">{"graph LR\n    A --> B"}</code>
+      <Pre data-language="mermaid">
+        <code>
+          <span className="line">
+            <span>graph LR</span>
+          </span>
+          <span className="line">
+            <span>{"    A --> B"}</span>
+          </span>
+        </code>
       </Pre>
     );
     expect(screen.getByTestId("mermaid-mock")).toBeInTheDocument();
@@ -79,5 +86,17 @@ describe("mdxComponents", () => {
     );
     expect(container.querySelector("pre")).toBeInTheDocument();
     expect(screen.queryByTestId("mermaid-mock")).not.toBeInTheDocument();
+  });
+
+  it("pre merges custom className with Shiki className", () => {
+    const Pre = mdxComponents.pre as React.FC<React.ComponentPropsWithoutRef<"pre">>;
+    const { container } = render(
+      <Pre className="shiki github-light">
+        <code>{"const x = 1;"}</code>
+      </Pre>
+    );
+    const pre = container.querySelector("pre");
+    expect(pre?.className).toContain("rounded-lg");
+    expect(pre?.className).toContain("shiki");
   });
 });

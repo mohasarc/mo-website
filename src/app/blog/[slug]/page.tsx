@@ -98,6 +98,28 @@ export default async function BlogPostPage({ params }: PageProps) {
           }}
         />
       </article>
+
+      <Separator className="mt-12 mb-8" />
+
+      <footer className="flex items-center gap-4">
+        <div className="h-12 w-12 rounded-full overflow-hidden border border-border shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/personal/moyaseen-profile-1.webp"
+            alt="Mohammed Yaseen"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-foreground">
+            Mohammed Yaseen
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Full-stack software engineer. Writing about software, AI, design,
+            and things I find interesting.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

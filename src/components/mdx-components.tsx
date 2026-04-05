@@ -1,53 +1,66 @@
 import type { MDXComponents } from "mdx/types";
-import type { ComponentPropsWithoutRef, ReactElement } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 import Mermaid from "./Mermaid";
 
-function isMermaidCodeBlock(
-  children: React.ReactNode
-): children is ReactElement<{ children: string; className: string }> {
-  if (
-    children &&
-    typeof children === "object" &&
-    "props" in children &&
-    typeof children.props === "object" &&
-    children.props !== null &&
-    "className" in children.props
-  ) {
-    return (
-      typeof children.props.className === "string" &&
-      children.props.className.includes("language-mermaid")
-    );
+/** Recursively extract raw text from a React node tree (e.g. Shiki spans). */
+function extractText(node: ReactNode): string {
+  if (typeof node === "string") return node;
+  if (typeof node === "number") return String(node);
+  if (node == null || typeof node === "boolean") return "";
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (typeof node === "object" && "props" in node) {
+    const props = node.props as Record<string, unknown>;
+    return extractText(props.children as ReactNode);
   }
-  return false;
+  return "";
 }
 
 export const mdxComponents: MDXComponents = {
-  h1: (props: ComponentPropsWithoutRef<"h1">) => (
+  h1: ({ className, ...props }: ComponentPropsWithoutRef<"h1">) => (
     <h1
-      className="font-serif text-3xl font-bold mt-8 mb-4 text-foreground"
+      className={cn(
+        "font-serif text-3xl font-bold mt-8 mb-4 text-foreground",
+        className
+      )}
       {...props}
     />
   ),
-  h2: (props: ComponentPropsWithoutRef<"h2">) => (
+  h2: ({ className, ...props }: ComponentPropsWithoutRef<"h2">) => (
     <h2
-      className="font-sans text-2xl font-bold mt-8 mb-3 text-foreground"
+      className={cn(
+        "font-sans text-2xl font-bold mt-8 mb-3 text-foreground",
+        className
+      )}
       {...props}
     />
   ),
-  h3: (props: ComponentPropsWithoutRef<"h3">) => (
+  h3: ({ className, ...props }: ComponentPropsWithoutRef<"h3">) => (
     <h3
-      className="font-sans text-xl font-semibold mt-6 mb-2 text-foreground"
+      className={cn(
+        "font-sans text-xl font-semibold mt-6 mb-2 text-foreground",
+        className
+      )}
       {...props}
     />
   ),
-  h4: (props: ComponentPropsWithoutRef<"h4">) => (
+  h4: ({ className, ...props }: ComponentPropsWithoutRef<"h4">) => (
     <h4
-      className="font-sans text-lg font-semibold mt-4 mb-2 text-foreground"
+      className={cn(
+        "font-sans text-lg font-semibold mt-4 mb-2 text-foreground",
+        className
+      )}
       {...props}
     />
   ),
-  p: (props: ComponentPropsWithoutRef<"p">) => (
-    <p className="text-base leading-relaxed text-foreground my-4" {...props} />
+  p: ({ className, ...props }: ComponentPropsWithoutRef<"p">) => (
+    <p
+      className={cn(
+        "text-base leading-relaxed text-foreground my-4",
+        className
+      )}
+      {...props}
+    />
   ),
   a: (props: ComponentPropsWithoutRef<"a">) => (
     <a
@@ -57,25 +70,43 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
+  blockquote: ({ className, ...props }: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
-      className="border-l-4 border-primary pl-4 italic text-muted-foreground my-4"
+      className={cn(
+        "border-l-4 border-primary pl-4 italic text-muted-foreground my-4",
+        className
+      )}
       {...props}
     />
   ),
-  code: (props: ComponentPropsWithoutRef<"code">) => (
+  code: ({ className, ...props }: ComponentPropsWithoutRef<"code">) => (
     <code
-      className="font-mono text-sm bg-muted px-1.5 py-0.5 rounded-md"
+      className={cn(
+        "font-mono text-sm bg-muted px-1.5 py-0.5 rounded-md",
+        className
+      )}
       {...props}
     />
   ),
-  pre: ({ children, ...props }: ComponentPropsWithoutRef<"pre">) => {
-    if (isMermaidCodeBlock(children)) {
-      return <Mermaid chart={children.props.children} />;
+  pre: ({
+    children,
+    className,
+    ...props
+  }: ComponentPropsWithoutRef<"pre"> & {
+    "data-language"?: string;
+  }) => {
+    // Detect mermaid: Shiki sets data-language on <pre>, or original className on <code>
+    const dataLanguage = props["data-language"];
+    if (dataLanguage === "mermaid") {
+      return <Mermaid chart={extractText(children)} />;
     }
+
     return (
       <pre
-        className="rounded-lg border border-border overflow-x-auto p-4 my-4 [&>code]:bg-transparent [&>code]:p-0 [&>code]:rounded-none"
+        className={cn(
+          "rounded-lg border border-border overflow-x-auto p-4 my-4 [&>code]:bg-transparent [&>code]:p-0 [&>code]:rounded-none",
+          className
+        )}
         {...props}
       >
         {children}
@@ -87,30 +118,45 @@ export const mdxComponents: MDXComponents = {
       <table className="w-full border-collapse" {...props} />
     </div>
   ),
-  th: (props: ComponentPropsWithoutRef<"th">) => (
+  th: ({ className, ...props }: ComponentPropsWithoutRef<"th">) => (
     <th
-      className="bg-muted font-semibold text-left px-4 py-2 border border-border"
+      className={cn(
+        "bg-muted font-semibold text-left px-4 py-2 border border-border",
+        className
+      )}
       {...props}
     />
   ),
-  td: (props: ComponentPropsWithoutRef<"td">) => (
-    <td className="px-4 py-2 border border-border" {...props} />
+  td: ({ className, ...props }: ComponentPropsWithoutRef<"td">) => (
+    <td
+      className={cn("px-4 py-2 border border-border", className)}
+      {...props}
+    />
   ),
-  img: (props: ComponentPropsWithoutRef<"img">) => (
+  img: ({ className, ...props }: ComponentPropsWithoutRef<"img">) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className="rounded-lg border border-border max-w-full my-4"
+      className={cn(
+        "rounded-lg border border-border max-w-full my-4",
+        className
+      )}
       alt={props.alt ?? ""}
       {...props}
     />
   ),
-  ul: (props: ComponentPropsWithoutRef<"ul">) => (
-    <ul className="list-disc pl-6 my-4 space-y-1" {...props} />
+  ul: ({ className, ...props }: ComponentPropsWithoutRef<"ul">) => (
+    <ul
+      className={cn("list-disc pl-6 my-4 space-y-1", className)}
+      {...props}
+    />
   ),
-  ol: (props: ComponentPropsWithoutRef<"ol">) => (
-    <ol className="list-decimal pl-6 my-4 space-y-1" {...props} />
+  ol: ({ className, ...props }: ComponentPropsWithoutRef<"ol">) => (
+    <ol
+      className={cn("list-decimal pl-6 my-4 space-y-1", className)}
+      {...props}
+    />
   ),
-  hr: (props: ComponentPropsWithoutRef<"hr">) => (
-    <hr className="border-border my-8" {...props} />
+  hr: ({ className, ...props }: ComponentPropsWithoutRef<"hr">) => (
+    <hr className={cn("border-border my-8", className)} {...props} />
   ),
 };

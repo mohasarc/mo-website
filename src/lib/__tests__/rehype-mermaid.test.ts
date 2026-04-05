@@ -42,4 +42,24 @@ describe("rehypeMermaid", () => {
     const pre = tree.children[0] as Element;
     expect(pre.tagName).toBe("pre");
   });
+
+  it("replaces mermaid blocks nested inside other elements (e.g. details)", () => {
+    const tree: Root = {
+      type: "root",
+      children: [
+        {
+          // Simulates mdxJsxFlowElement or any wrapper with children
+          type: "mdxJsxFlowElement" as never,
+          children: [makeCodeBlock("mermaid", "graph TD\n    X --> Y")],
+        } as never,
+      ],
+    };
+    transform(tree, {} as never, () => {});
+    const wrapper = tree.children[0] as unknown as {
+      children: Element[];
+    };
+    const div = wrapper.children[0];
+    expect(div.tagName).toBe("div");
+    expect(div.properties?.["data-mermaid"]).toBe("true");
+  });
 });

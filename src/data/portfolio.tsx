@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBehance, FaFilePdf, FaGithub, FaLinkedin, FaUpwork } from "react-icons/fa6";
+import { FaBehance, FaFilePdf, FaGithub, FaLinkedin, FaPenNib, FaUpwork } from "react-icons/fa6";
 
 export interface Link {
   icon?: React.ReactNode;
@@ -87,6 +87,7 @@ export const portfolioData = {
       { label: "LinkedIn", url: "https://www.linkedin.com/in/mohasy/", icon: <FaLinkedin className="text-blue-700" /> },
       { label: "UpWork", url: "https://www.upwork.com/freelancers/~01f49cf3f56619fe1d?mp_source=share", icon: <FaUpwork /> },
       { label: "Behance", url: "https://www.behance.net/myds", icon: <FaBehance /> },
+      { label: "Blog", url: "/blog", icon: <FaPenNib /> },
       { label: "Resume / CV", url: "/personal/Mohammed_S__Yaseen_resume_2026.pdf", icon: <FaFilePdf className="text-red-500" /> },
       // { label: "Twitter / X", url: "#", icon: <FaTwitter className="text-blue-400" /> },
       // { label: "Google Scholar", url: "#", icon: <FaGoogle className="text-blue-500" /> },

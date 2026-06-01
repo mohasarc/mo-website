@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant colorful (&:is(.colorful *));
 
 @theme inline {
   --color-background: var(--background);
@@ -188,6 +189,36 @@ html.colorful body {
   0% { background-position: 0 0, 0% 50%; }
   50% { background-position: 0 0, 100% 50%; }
   100% { background-position: 0 0, 0% 50%; }
+}
+
+/* Shiki dual-theme support */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+.colorful .shiki,
+.colorful .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+/* Use system monospace fonts for code blocks — Geist Mono renders
+   box-drawing characters (│├└─) at inconsistent widths, breaking
+   ASCII tree/diagram alignment. System monospace fonts handle these
+   correctly while still looking great for code. */
+pre,
+pre code,
+pre code span {
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+    Consolas, "DejaVu Sans Mono", monospace !important;
 }
 
 @layer base {

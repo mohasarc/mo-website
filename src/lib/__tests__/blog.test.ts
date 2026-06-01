@@ -23,7 +23,7 @@ describe("getAllPosts", () => {
     expect(hello!.date).toBe("2026-04-05");
     expect(hello!.excerpt).toContain("first blog post");
     expect(hello!.tags).toEqual(["meta", "web-dev"]);
-    expect(hello!.published).toBe(true);
+    expect(hello!.published).toBe(false);
   });
 
   it("defaults tags to [] and published to true when missing", () => {
@@ -53,6 +53,23 @@ describe("getAllPosts", () => {
 });
 
 describe("getPostBySlug", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("returns null for unpublished posts in production mode", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    const post = getPostBySlug("draft-post");
+    expect(post).toBeNull();
+  });
+
+  it("returns unpublished posts in development mode", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    const post = getPostBySlug("draft-post");
+    expect(post).not.toBeNull();
+    expect(post!.published).toBe(false);
+  });
+
   it("returns post content and metadata for existing slug", () => {
     const post = getPostBySlug("hello-world");
     expect(post).not.toBeNull();

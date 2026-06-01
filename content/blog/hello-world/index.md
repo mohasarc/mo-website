@@ -3,7 +3,7 @@ title: "Hello World"
 date: "2026-04-05"
 excerpt: "My first blog post — testing code, diagrams, and everything in between."
 tags: ["meta", "web-dev"]
-published: true
+published: false
 ---
 
 Welcome to my blog! Here's what this system supports.
@@ -37,6 +37,8 @@ graph LR
 ## Images
 
 *Place images in `public/blog/hello-world/` and reference them like: `![Alt text](/blog/hello-world/photo.webp)`*
+
+![Alt text](/blog/hello-world/photo.png)
 
 ## Videos
 

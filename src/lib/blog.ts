@@ -58,13 +58,16 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
 
+  const published = data.published ?? true;
+  if (process.env.NODE_ENV === "production" && !published) return null;
+
   return {
     slug,
     title: data.title ?? "",
     date: data.date ?? "",
     excerpt: data.excerpt ?? "",
     tags: data.tags ?? [],
-    published: data.published ?? true,
+    published,
     content,
   };
 }
